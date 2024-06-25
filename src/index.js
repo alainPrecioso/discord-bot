@@ -44,12 +44,10 @@ client.on('interactionCreate', async interaction => {
     }
 
     if (interaction.commandName === 'signer') {
-        const url = `http://api.giphy.com/v1/gifs/search?q=signing+signature
-        &api_key=${process.env.GIPHY_API_KEY}&limit=50`;
+        const url = `http://api.giphy.com/v1/gifs/search?q=signature-signing
+        &api_key=${process.env.GIPHY_API_KEY}&limit=10`;
         const res = await fetch(url);
-
         const json = await res.json();
-    
         const randomIndex = Math.floor(Math.random() * json.data.length);
         interaction.reply(`@everyone, on peut signer ! 
 https://app.sowesign.com/login`);

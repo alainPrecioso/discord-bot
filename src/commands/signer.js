@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'signer',
+    description: 'On peut signer !',
     async execute(interaction) {
         const url = `http://api.giphy.com/v1/gifs/search?q=signature-signing&api_key=${process.env.GIPHY_API_KEY}&limit=10`;
         const res = await fetch(url);

@@ -1,11 +1,14 @@
 const { chatMessage, chatMessageResponse } = require('../services/chat');
-const { reversi } = require('../services/reactions');
+const { reversi, goat } = require('../services/reactions');
 
 module.exports = {
     name: 'messageCreate',
     async execute(message) {
         if (message.author.bot) return;
-
+        
+        if(message.author.id === '1231895075580280903') {
+            goat(message);
+        }
         if (message.content.toLowerCase().includes('reversi')) {
             reversi(message);
         }

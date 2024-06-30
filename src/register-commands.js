@@ -10,18 +10,6 @@ const commands = [
         name: 'signer',
         description: 'On peut signer !'
     },
-    {
-        name: 'chat',
-        description: 'Discuter avec le bot',
-        options: [
-            {
-                name: 'message',
-                description: 'Votre message au bot',
-                type: ApplicationCommandOptionType.String,
-                required: true
-            }
-        ]
-    }
 ];
 
 const rest = new REST({version: '10'}).setToken(process.env.TOKEN);

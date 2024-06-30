@@ -5,11 +5,11 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_KEY
 });
 
-async function chat(userId, username, chatMessage) {
-    saveUserHistory(userId, 'user', username, chatMessage);
+async function chat(userId, username, messageContent, message) {
+    saveUserHistory(userId, 'user', username, messageContent);
     const botResponse = await getGPTResponse(userId);
     saveUserHistory(userId, 'assistant', 'Alain_s_First_Bot', botResponse);
-    return botResponse;
+    sendGPTResponse(botResponse, message);
 }
 
 async function getGPTResponse(userId) {
@@ -38,13 +38,14 @@ async function getGPTResponse(userId) {
     return botMessage;
 }
 
-function sendGPTResponse(botMessage, interaction) {
+function sendGPTResponse(botMessage, message) {
     const chunkSizeLimit = 2000;
 
     for (let i = 0; i < botMessage.length; i += chunkSizeLimit) {
         const chunk = botMessage.substring(i, i + chunkSizeLimit);
-        i === 0 ? interaction.editReply(chunk) : interaction.followUp(chunk);
+        i === 0 ? message.reply(chunk) : message.channel.send(chunk);
     }
 }
+
 
 module.exports = { chat, getGPTResponse, sendGPTResponse };

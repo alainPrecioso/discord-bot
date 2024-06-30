@@ -1,4 +1,5 @@
-const { chatMessage, chatMessageResponse } = require('../commands/chat');
+const { chatMessage, chatMessageResponse } = require('../services/chat');
+const { reversi } = require('../services/reactions');
 
 module.exports = {
     name: 'messageCreate',
@@ -6,8 +7,7 @@ module.exports = {
         if (message.author.bot) return;
 
         if (message.content.toLowerCase().includes('reversi')) {
-            const reversi = require('../commands/reversi');
-            reversi.execute(message);
+            reversi(message);
         }
         if (message.content.startsWith('<@1232224045424971788>')) {
             await chatMessage(message);

@@ -1,3 +1,5 @@
+const { reversi } = require('../services/reactions');
+
 module.exports = {
     name: 'messageUpdate',
     execute(oldMessage, newMessage) {
@@ -5,8 +7,7 @@ module.exports = {
 
         if (oldMessage.content.toLowerCase().includes('reversi')) return;
         if (newMessage.content.toLowerCase().includes('reversi')) {
-            const reversi = require('../commands/reversi');
-            reversi.execute(newMessage);
+            reversi(newMessage);
         }
     },
 };

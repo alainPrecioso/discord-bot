@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
-const { loadCommands, loadEvents } = require('./client');
-const { registerSlashCommands } = require('./registerSlashCommands');
+const { loadCommands, loadEvents, registerSlashCommands } = require('./client');
 
 const client = new Client({
     intents: [
@@ -16,12 +15,11 @@ client.commands = new Map();
 
 client.login(process.env.TOKEN);
 
-client.once('ready', () => {
+client.once('ready', async () => {
     console.log(`${client.user.username} is online.`);
-    registerSlashCommands(client);
+    await loadCommands(client);
+    await loadEvents(client);
+    await registerSlashCommands(client);
 });
-
-loadCommands(client);
-loadEvents(client);
 
 module.exports = client;

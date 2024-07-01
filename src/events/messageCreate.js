@@ -12,7 +12,7 @@ module.exports = {
         if (message.content.toLowerCase().includes('reversi')) {
             reversi(message);
         }
-        const helloKeywords = ['bonjour', 'salut', 'hello', '\\bhi\\b'];
+        const helloKeywords = ['bonjour', 'coucou', 'salut', 'hello', '\\bhi\\b', 'good[\\s-_+]?morning'];
         if (helloKeywords.some(keyword => new RegExp(keyword, 'i').test(message.content))) {
             hello(message);
         }

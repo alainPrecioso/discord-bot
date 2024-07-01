@@ -11,7 +11,8 @@ module.exports = {
                 goat(message);
             }
         }
-        if(message.content.toLowerCase.contains('goat')) {
+        const goatKeywords = ['goat', '🐐', 'keanu'];
+        if(message.content.toLowerCase().contains(goatKeywords)) {
             goat(message);
         }
         if (message.content.toLowerCase().includes('reversi')) {

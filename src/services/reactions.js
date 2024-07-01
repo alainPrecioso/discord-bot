@@ -5,4 +5,7 @@ module.exports = {
     async goat(message) {
         message.react('🐐');
     },
+    async hello(message) {
+        message.react('👋');
+    },
 };

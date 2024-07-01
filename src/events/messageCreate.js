@@ -1,5 +1,5 @@
 const { chatMessage, chatMessageResponse } = require('../services/chat');
-const { reversi, goat } = require('../services/reactions');
+const { reversi, goat, hello } = require('../services/reactions');
 
 module.exports = {
     name: 'messageCreate',
@@ -11,6 +11,10 @@ module.exports = {
         }
         if (message.content.toLowerCase().includes('reversi')) {
             reversi(message);
+        }
+        const helloKeywords = ['bonjour', 'salut', 'hello', '\\bhi\\b'];
+        if (helloKeywords.some(keyword => new RegExp(keyword, 'i').test(message.content))) {
+            hello(message);
         }
         if (message.content.startsWith('<@1232224045424971788>')) {
             await chatMessage(message);

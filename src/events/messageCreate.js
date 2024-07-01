@@ -7,6 +7,11 @@ module.exports = {
         if (message.author.bot) return;
         
         if(message.author.id === '1231895075580280903') {
+            if (Math.random() < 0.01) {
+                goat(message);
+            }
+        }
+        if(message.content.toLowerCase.contains('goat')) {
             goat(message);
         }
         if (message.content.toLowerCase().includes('reversi')) {
